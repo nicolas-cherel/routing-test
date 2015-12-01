@@ -22,7 +22,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function(first) {
             if (first) {
                 this.contents = this.jsonContents.map(function(scriptTag) {
-                    return JSON.parse(scriptTag.innerText);
+                    return JSON.parse(scriptTag.innerHTML);
                 });
             } 
         }
