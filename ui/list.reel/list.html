@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="list.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "routable": {"@": "routableInfo"}
+            },
+            "bindings": {
+                "selected": {
+                    "<->": "@listing.contentController.selection.0"
+                },
+                "selectedIndex": {
+                    "<-": "@listing.selectedIndexes.0"
+                }
+            }
+        },
+        "routableInfo": {
+            "prototype": "router[Routable]",
+            "properties": {
+                "target": {"@": "owner"}
+            },
+            "bindings": {
+                "state.selectedIndex": {"<->": "@owner.selectedIndex"}
+            }
+        },
+        "listing": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "listing"},
+                "isSelectionEnabled": true
+            },
+            "bindings": {
+                "content": {"<-": "@owner.content"},
+                "contentController.selection.0": {"<-": "content.get(@owner.selectedIndex)"}
+            }
+        },
+        "title": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {"element": {"#": "title"}},
+            "bindings": {
+                "value": {"<-": "@listing:iteration.object.title"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="owner" class="List">
+        <div data-montage-id="listing">
+            <div data-montage-id="title"></div>
+        </div>
+    </div>
+</body>
+</html>

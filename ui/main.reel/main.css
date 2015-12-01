@@ -1,0 +1,41 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.Main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.Main .layout.select {
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.Main .layout.list {
+  position: absolute;
+  top:50px;
+  left:0;
+  bottom:50px;
+  width:50%;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.Main .layout.details {
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:50px;
+  width:50%;
+  overflow: scroll; 
+  box-shadow: -1px 0px lightgray;
+}
+
+.Main .layout.version {
+  position: absolute;
+  bottom: 0;
+  padding: 16px;
+}

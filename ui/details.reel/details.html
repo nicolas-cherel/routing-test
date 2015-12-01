@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="details.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "routable": {"@": "routableInfo"}
+            }
+        },
+        "routableInfo": {
+            "prototype": "router[Routable]",
+            "properties": {
+                "target": {"@": "owner"}
+            },
+            "bindings": {
+                "state.switch": {"<->": "@panelSwitch.switchValue"}
+            }
+        },
+        "options": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "contentController": {"@": "optionsListController"},
+                "element": {"#": "panelsSelects"},
+                "isSelectionEnabled": true
+            }
+        },
+        "optionsListController": {
+            "prototype": "montage/core/range-controller",
+            "properties": {
+                "content": ["title" ,"author" ,"date"]
+            }
+        },
+        "panelButton": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "panelButton"}
+            },
+            "bindings": {
+                "value": {"<-": "@options:iteration.object"}
+            }
+        },
+        "panelSwitch": {
+            "prototype": "montage/ui/substitution.reel", 
+            "properties": {
+                "element": {"#": "panels"}
+            },
+            "bindings": {
+                "switchValue": {"<->": "@optionsListController.selection.0"}
+            }
+        },
+        "title": {
+            "prototype": "montage/ui/text.reel",
+            "properties": { 
+                "element": {"#": "title" }
+            },
+            "bindings": {
+                "value": {"<-": "@owner.content.title"}
+            }
+        },
+        "author": {
+            "prototype": "montage/ui/text.reel",
+            "properties": { 
+                "element": {"#": "author" }
+            },
+            "bindings": {
+                "value": {"<-": "@owner.content.author"}
+            }
+        },
+        "date": {
+            "prototype": "montage/ui/text.reel",
+            "properties": { 
+                "element": {"#": "date" },
+                "converter": {"@": "dateConverter"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.content.created"}
+            }
+        },
+        "dateConverter": {
+            "prototype": "montage/core/converter/date-converter",
+            "properties": {
+                "pattern": "HH\\hmm:ss, dd MMMM"
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="owner" class="Details">
+        <div data-montage-id="panelsSelects" class="panelHeads">
+            <span data-montage-id="panelButton"></span>
+        </div>
+        <div data-montage-id="panels" class="panels">
+            <div data-arg="title"  data-montage-id="title">
+            </div>
+            <div data-arg="author" data-montage-id="author">
+            </div>
+            <div data-arg="date"   data-montage-id="date">
+            </div>        
+        </div>
+    </div>
+</body>
+</html>
