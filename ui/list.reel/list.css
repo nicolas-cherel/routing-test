@@ -1,0 +1,1 @@
+.List{color:#777;padding-left:25px}.List .selected{color:#333}.list>div>div{cursor:default;position:relative;padding:4px 0}.list>div>div.selected::before,.list>div>div:hover::before{content:"\276F";position:absolute;right:100%;padding-right:8px}.list>div>div.selected,.list>div>div.selected::before{text-shadow:0 0 0 #fff,0 1px 0 #EAE7E7,0 2px 0 #E8E8E8}

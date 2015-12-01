@@ -1,0 +1,1 @@
+montageDefine("579d289","scripts/reddit-story-sum",{dependencies:["json-path"],factory:function(e){var t=e("json-path"),n=e(process.argv[2]);p=t.create("#/data/children[*]/data[]take(/title,/url,/created,/author)"),process.stdout.write(JSON.stringify(p.resolve(n)))}});

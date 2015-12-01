@@ -1,0 +1,1 @@
+var Component=require("montage/ui/component").Component;exports.Main=Component.specialize({constructor:{value:function(){this.super()}},selectedContent:{value:0},enterDocument:{value:function(e){e&&(this.contents=this.jsonContents.map(function(e){return JSON.parse(e.innerHTML)}))}}});
