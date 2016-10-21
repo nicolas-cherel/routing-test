@@ -21,9 +21,8 @@ var Routable = exports.Routable = Montage.specialize(/** @lends Routable# */ {
     deserializedFromSerialization: {
         value: function() {
             var router = this.target.rootComponent.router;
-            Object.keys(this.state).forEach(function(keyName) {
+            router && Object.keys(this.state).forEach(function(keyName) {
                 observe(this, "state."+keyName, {
-                    components: this.labeler,
                     change: function(value) {
                         router.notifyRoutableStateChange(this, keyName);
                     }.bind(this)
@@ -43,19 +42,6 @@ var Routable = exports.Routable = Montage.specialize(/** @lends Routable# */ {
 
     state: {
         value: null
-    },
-
-    _labeler: {
-        value: null
-    },
-    labeler: {
-        get: function labeler() {
-            return this._labeler || (this._labeler = {
-                getObjectByLabel: function(label) {
-                    return this.target.templateObjects[label]
-                }.bind(this)
-            });
-        }
     },
 
     applyPropertyState: {

@@ -1,7 +1,8 @@
 /**
  * @module ui/main.reel
  */
-var Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component,
+    SnapshotSerializer = require("core/snapshot-serializer").SnapshotSerializer;
 
 /**
  * @class Main
@@ -15,7 +16,21 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     },
 
     selectedContent: {
-        value: 0
+        value: 0,
+        serializable: true
+    },
+
+    serialize: {
+        value: function() {
+            return new SnapshotSerializer().initWithRequire(require).serializeObject(this);
+        }
+    },
+
+    saveState: {
+        serializale: false,
+        value: function() {
+            localStorage.setItem("snapshot", this.serialize())
+        }
     },
 
     enterDocument: {
